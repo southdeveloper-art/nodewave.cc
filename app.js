@@ -682,7 +682,7 @@ function initAudioTester() {
                 </div>
                 <h3 class="active-player-title">${title}</h3>
                 <p class="active-player-artist">${artist}</p>
-                <audio class="active-player-audio" controls autoplay name="media">
+                <audio class="active-player-audio" controls autoplay controlsList="nodownload noplaybackrate" name="media">
                     <source src="${previewUrl}" type="audio/x-m4a">
                 </audio>
             </div>
