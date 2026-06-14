@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPingTester();
     initCodeConfigurator();
     initFAQAccordion();
+    initAudioTester();
 });
 
 /* --------------------------------------------------------------------------
@@ -561,4 +562,121 @@ function initFAQAccordion() {
             }
         });
     });
+}
+
+/* --------------------------------------------------------------------------
+   7. Lavalink Audio Tester (iTunes API Integration)
+   -------------------------------------------------------------------------- */
+function initAudioTester() {
+    const searchInput = document.getElementById('audio-search-input');
+    const searchBtn = document.getElementById('btn-audio-search');
+    const resultsPanel = document.getElementById('audio-results-panel');
+    const playerPanel = document.getElementById('audio-player-panel');
+
+    if (!searchInput || !searchBtn || !resultsPanel || !playerPanel) return;
+
+    // Trigger search on enter key
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            performSearch(searchInput.value);
+        }
+    });
+
+    searchBtn.addEventListener('click', () => {
+        performSearch(searchInput.value);
+    });
+
+    async function performSearch(query) {
+        if (!query.trim()) return;
+
+        // Show loading state
+        searchBtn.disabled = true;
+        searchBtn.textContent = 'Searching...';
+        resultsPanel.innerHTML = `
+            <div class="empty-state">
+                <svg class="animate-pulse" style="animation: spin 1s linear infinite" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="2" x2="12" y2="6"></line>
+                    <line x1="12" y1="18" x2="12" y2="22"></line>
+                    <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                    <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                    <line x1="2" y1="12" x2="6" y2="12"></line>
+                    <line x1="18" y1="12" x2="22" y2="12"></line>
+                    <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+                    <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+                </svg>
+                <p>Searching tracks...</p>
+            </div>
+        `;
+
+        try {
+            const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=6`);
+            const data = await response.json();
+
+            resultsPanel.innerHTML = ''; // clear loading state
+
+            if (data.results && data.results.length > 0) {
+                data.results.forEach(track => {
+                    const item = document.createElement('div');
+                    item.className = 'audio-result-item';
+                    
+                    // High-res artwork for player, low res for list
+                    const artworkUrl = track.artworkUrl100 ? track.artworkUrl100.replace('100x100bb', '300x300bb') : '';
+                    
+                    item.innerHTML = `
+                        <img src="${track.artworkUrl100}" alt="Artwork" loading="lazy">
+                        <div class="audio-result-info">
+                            <div class="audio-result-title" title="${track.trackName}">${track.trackName}</div>
+                            <div class="audio-result-artist">${track.artistName}</div>
+                        </div>
+                    `;
+
+                    // Click handler to play track
+                    item.addEventListener('click', () => {
+                        playTrack(track.trackName, track.artistName, artworkUrl, track.previewUrl);
+                    });
+
+                    resultsPanel.appendChild(item);
+                });
+            } else {
+                resultsPanel.innerHTML = `
+                    <div class="empty-state">
+                        <p>No songs found for "${query}"</p>
+                    </div>
+                `;
+            }
+
+        } catch (err) {
+            console.error('Search failed:', err);
+            resultsPanel.innerHTML = `
+                <div class="empty-state">
+                    <p style="color: #ef4444;">Error fetching results. Try again later.</p>
+                </div>
+            `;
+        } finally {
+            searchBtn.disabled = false;
+            searchBtn.textContent = 'Search';
+        }
+    }
+
+    function playTrack(title, artist, artwork, previewUrl) {
+        if (!previewUrl) {
+            playerPanel.innerHTML = `
+                <div class="empty-state">
+                    <p style="color: #ef4444;">No audio preview available for this track.</p>
+                </div>
+            `;
+            return;
+        }
+
+        playerPanel.innerHTML = `
+            <div class="active-player-container" style="animation: fade-in 0.5s ease;">
+                <img src="${artwork}" alt="${title}" class="active-player-art">
+                <h3 class="active-player-title">${title}</h3>
+                <p class="active-player-artist">${artist}</p>
+                <audio class="active-player-audio" controls autoplay name="media">
+                    <source src="${previewUrl}" type="audio/x-m4a">
+                </audio>
+            </div>
+        `;
+    }
 }

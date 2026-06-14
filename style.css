@@ -1390,6 +1390,215 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
+   Lavalink Audio Test Section
+   ========================================================================== */
+.audio-test-section {
+    padding: 100px 0;
+}
+
+.audio-test-wrapper {
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(15, 17, 21, 0.6);
+}
+
+.audio-test-header {
+    margin-bottom: 2rem;
+}
+
+.test-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(43, 88, 248, 0.15);
+    color: #5c85ff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(43, 88, 248, 0.3);
+}
+
+.test-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    max-width: 700px;
+}
+.test-desc strong {
+    color: var(--text-primary);
+}
+
+.test-search-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.search-input-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.search-input-wrapper svg {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-muted);
+}
+.search-input-wrapper input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.75rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    outline: none;
+    transition: var(--transition-fast);
+}
+.search-input-wrapper input:focus {
+    border-color: #5c85ff;
+    box-shadow: 0 0 0 2px rgba(92, 133, 255, 0.2);
+}
+
+.btn-search-test {
+    background: #2b58f8;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0 2rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-search-test:hover {
+    background: #3e68fa;
+    transform: none;
+    box-shadow: none;
+}
+
+.test-panels-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    height: 350px;
+}
+
+.test-panel {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.empty-state {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-muted);
+    text-align: center;
+    pointer-events: none;
+}
+.empty-state p {
+    font-size: 0.9rem;
+}
+
+/* Audio Search Results */
+.audio-result-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+.audio-result-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+.audio-result-item img {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+.audio-result-info {
+    flex: 1;
+    overflow: hidden;
+}
+.audio-result-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.audio-result-artist {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Audio Player */
+.active-player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 2rem;
+    text-align: center;
+}
+.active-player-art {
+    width: 140px;
+    height: 140px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1.5rem;
+    object-fit: cover;
+}
+.active-player-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+.active-player-artist {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+.active-player-audio {
+    width: 100%;
+    max-width: 300px;
+    outline: none;
+}
+/* Audio Test Section specific responsive rules */
+@media (max-width: 768px) {
+    .test-panels-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 500px;
+    }
+    .test-panel {
+        min-height: 250px;
+    }
+    .test-search-row {
+        flex-direction: column;
+    }
+    .btn-search-test {
+        padding: 0.8rem 2rem;
+    }
+}
+
+/* ==========================================================================
    13. Responsive Media Queries
    ========================================================================== */
 
