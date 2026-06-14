@@ -1394,6 +1394,36 @@ h1, h2, h3, h4 {
    ========================================================================== */
 .audio-test-section {
     padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ambient background effect */
+.audio-test-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80vw;
+    height: 80vw;
+    max-width: 1200px;
+    max-height: 1200px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(54, 97, 255, 0.15) 0%, rgba(15, 17, 21, 0) 70%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 1s ease;
+}
+
+.audio-test-section.audio-playing-ambient::before {
+    opacity: 1;
+    animation: ambient-pulse 4s infinite alternate ease-in-out;
+}
+
+@keyframes ambient-pulse {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; background: radial-gradient(circle, rgba(100, 54, 255, 0.2) 0%, rgba(15, 17, 21, 0) 70%); }
 }
 
 .audio-test-wrapper {
@@ -1401,6 +1431,8 @@ h1, h2, h3, h4 {
     border: 1px solid rgba(255, 255, 255, 0.04);
     background: #111216;
     border-radius: 12px;
+    position: relative;
+    z-index: 1;
 }
 
 .audio-test-header {

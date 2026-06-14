@@ -690,15 +690,19 @@ function initAudioTester() {
 
         const audioEl = playerPanel.querySelector('.active-player-audio');
         const artWrapper = playerPanel.querySelector('.art-wrapper');
+        const sectionEl = document.getElementById('audio-test');
 
         audioEl.addEventListener('play', () => {
             artWrapper.classList.add('is-playing');
+            if (sectionEl) sectionEl.classList.add('audio-playing-ambient');
         });
         audioEl.addEventListener('pause', () => {
             artWrapper.classList.remove('is-playing');
+            if (sectionEl) sectionEl.classList.remove('audio-playing-ambient');
         });
         audioEl.addEventListener('ended', () => {
             artWrapper.classList.remove('is-playing');
+            if (sectionEl) sectionEl.classList.remove('audio-playing-ambient');
         });
     }
 }
