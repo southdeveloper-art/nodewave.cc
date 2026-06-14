@@ -1413,6 +1413,33 @@ h1, h2, h3, h4 {
     margin-bottom: 2rem;
 }
 
+.audio-test-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.powered-by-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.4rem 0.75rem;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+}
+.powered-by-badge svg {
+    color: #3661ff;
+    flex-shrink: 0;
+}
+
 .test-badge {
     display: inline-flex;
     align-items: center;
