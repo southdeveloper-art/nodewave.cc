@@ -1398,11 +1398,9 @@ h1, h2, h3, h4 {
 
 .audio-test-wrapper {
     padding: 3rem;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background: rgba(15, 17, 21, 0.6);
-    border-radius: 16px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: #111216;
+    border-radius: 12px;
 }
 
 .audio-test-header {
@@ -1413,14 +1411,14 @@ h1, h2, h3, h4 {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(43, 88, 248, 0.1);
-    color: #5c85ff;
-    padding: 0.5rem 0.8rem;
-    border-radius: 8px;
+    background: #0f1a36;
+    color: #4b7bff;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 1.25rem;
-    border: 1px solid rgba(43, 88, 248, 0.2);
+    border: none;
 }
 
 .test-desc {
@@ -1453,9 +1451,9 @@ h1, h2, h3, h4 {
 .search-input-wrapper input {
     width: 100%;
     padding: 1rem 1rem 1rem 3rem;
-    background: rgba(0, 0, 0, 0.5);
+    background: #07080a;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
+    border-radius: 6px;
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 0.95rem;
@@ -1464,26 +1462,24 @@ h1, h2, h3, h4 {
 }
 .search-input-wrapper input:focus {
     border-color: rgba(92, 133, 255, 0.5);
-    box-shadow: 0 0 0 4px rgba(92, 133, 255, 0.1);
-    background: rgba(0, 0, 0, 0.7);
+    background: #07080a;
 }
 
 .btn-search-test {
     background: #3661ff;
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     padding: 0 2.5rem;
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(54, 97, 255, 0.3);
+    box-shadow: 0 0 15px rgba(54, 97, 255, 0.4);
     transition: var(--transition-fast);
 }
 .btn-search-test:hover {
     background: #4a72ff;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(54, 97, 255, 0.4);
+    box-shadow: 0 0 20px rgba(54, 97, 255, 0.6);
 }
 
 .test-panels-grid {
@@ -1494,18 +1490,18 @@ h1, h2, h3, h4 {
 }
 
 .test-panel {
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 12px;
+    background: #07080a;
+    border-radius: 8px;
     overflow-y: auto;
     position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.02);
+    border: none;
 }
 
 .results-panel::-webkit-scrollbar {
     width: 6px;
 }
 .results-panel::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
+    background: #07080a;
     border-radius: 8px;
     margin: 4px;
 }
