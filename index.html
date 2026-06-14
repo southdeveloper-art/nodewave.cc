@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeWave | Premium Discord Bot & High-Performance Lavalink Hosting</title>
+    <meta name="description" content="Deploy your Discord bots and Lavalink audio nodes with ultra-low latency, 99.9% uptime SLA, and interactive instant scaling on the industry-leading NodeWave hosting platform.">
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background glowing visual spots -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <!-- Navigation Bar -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo" id="nav-logo">
+                <img src="nodewavelogo.png" alt="NodeWave Logo" class="logo-img">
+                <span>Node<span class="gradient-text">Wave</span></span>
+            </a>
+            <nav class="nav-links">
+                <a href="#services" class="nav-link" id="link-services">Services</a>
+                <a href="#pricing" class="nav-link" id="link-pricing">Pricing</a>
+                <a href="#status" class="nav-link" id="link-status">Node Status</a>
+                <a href="#configurator" class="nav-link" id="link-config">Configurator</a>
+                <a href="#faq" class="nav-link" id="link-faq">FAQ</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="https://discord.gg/bothost" class="btn-discord-nav" id="btn-nav-discord" target="_blank" rel="noopener">
+                    <svg width="20" height="15" viewBox="0 0 127.14 96.36" fill="currentColor">
+                        <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.45-5c.88-.65,1.74-1.34,2.58-2a75.58,75.58,0,0,0,72.9,0c.84.71,1.7,1.4,2.58,2a68.32,68.32,0,0,1-10.45,5,78.37,78.37,0,0,0,6.63,10.85,105.5,105.5,0,0,0,31.1-18.77C129.76,48.45,123.75,25.66,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/>
+                    </svg>
+                    <span>Discord</span>
+                </a>
+                <a href="#billing" class="btn btn-primary btn-nav-cta" id="btn-nav-portal">Client Panel</a>
+            </div>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle" id="mobile-nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-menu" id="mobile-menu-drawer">
+        <a href="#services" class="mobile-menu-link">Services</a>
+        <a href="#pricing" class="mobile-menu-link">Pricing</a>
+        <a href="#status" class="mobile-menu-link">Node Status</a>
+        <a href="#configurator" class="mobile-menu-link">Configurator</a>
+        <a href="#faq" class="mobile-menu-link">FAQ</a>
+        <div class="mobile-menu-actions">
+            <a href="https://discord.gg/bothost" class="btn-discord-nav" target="_blank" rel="noopener">Discord Support</a>
+            <a href="#billing" class="btn btn-primary" style="text-align: center; display: block; margin-top: 1rem;">Client Panel</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge-new-release">
+                        <span class="badge-dot animate-ping"></span>
+                        <span>Now Offering Lavalink v4 Music Nodes</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Ride the Wave of <br>
+                        <span class="gradient-text">High-Performance</span> Hosting
+                    </h1>
+                    <p class="hero-subtitle">
+                        Deploy Discord bots, gaming servers, and ultra-low latency Lavalink audio nodes on enterprise-grade hardware. Fast. Stable. Unlimited.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#pricing" class="btn btn-primary btn-large glow-hover" id="btn-hero-explore">Get Started</a>
+                        <a href="#status" class="btn btn-secondary btn-large" id="btn-hero-status">
+                            <span class="green-indicator animate-pulse"></span>
+                            Check Node Uptime
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat-item">
+                            <h3>99.99%</h3>
+                            <p>Guaranteed SLA</p>
+                        </div>
+                        <div class="hero-stat-item">
+                            <h3>&lt; 15ms</h3>
+                            <p>Lavalink Audio Latency</p>
+                        </div>
+                        <div class="hero-stat-item">
+                            <h3>10 Gbps</h3>
+                            <p>Global Network Speed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Graphic Hero Wave / Node Visual -->
+                <div class="hero-visual">
+                    <div class="visual-card-wrapper">
+                        <!-- Glassmorphic floating card 1 -->
+                        <div class="floating-card node-card">
+                            <div class="card-header-status">
+                                <span class="status-badge live">LAVALINK ACTIVE</span>
+                                <span class="latency-pill">12ms</span>
+                            </div>
+                            <div class="audio-waves">
+                                <span class="wave-bar bar-1"></span>
+                                <span class="wave-bar bar-2"></span>
+                                <span class="wave-bar bar-3"></span>
+                                <span class="wave-bar bar-4"></span>
+                                <span class="wave-bar bar-5"></span>
+                                <span class="wave-bar bar-6"></span>
+                                <span class="wave-bar bar-7"></span>
+                                <span class="wave-bar bar-8"></span>
+                            </div>
+                            <div class="node-meta">
+                                <span class="node-title">Node-01 (Frankfurt, EU)</span>
+                                <span class="node-track-name">Playing: Chill Lofi Beats 24/7</span>
+                            </div>
+                        </div>
+
+                        <!-- Glassmorphic floating card 2 -->
+                        <div class="floating-card bot-card">
+                            <div class="bot-header">
+                                <div class="bot-avatar-mock">
+                                    <div class="avatar-eye left"></div>
+                                    <div class="avatar-eye right"></div>
+                                    <div class="online-indicator"></div>
+                                </div>
+                                <div class="bot-details">
+                                    <h4>Garuda</h4>
+                                    <p>bot all in one</p>
+                                </div>
+                            </div>
+                            <div class="bot-spec-grid">
+                                <div class="spec-item">
+                                    <span>CPU</span>
+                                    <strong>1.2%</strong>
+                                </div>
+                                <div class="spec-item">
+                                    <span>RAM</span>
+                                    <strong>184 MB / 1 GB</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sphere mesh decorative grid -->
+                        <div class="mesh-grid-bg"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Highlight Section -->
+        <section class="services-section" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Engineered Specifically For Developers</h2>
+                    <p class="section-subtitle">We don't offer generic web hosting. We specialize in high-uptime bot hosting and extreme audio throughput.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <!-- Bot Hosting Card -->
+                    <div class="service-card" id="card-bot-hosting">
+                        <div class="service-icon-box cyan-glow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="10" rx="2" />
+                                <circle cx="12" cy="5" r="2" />
+                                <path d="M12 7v4M8 5h8" />
+                                <path d="M6 14v2M18 14v2" />
+                            </svg>
+                        </div>
+                        <h3>Discord Bot Hosting</h3>
+                        <p class="service-desc">
+                            Deploy bots written in any language: Node.js, Python, Java, Rust, or Go. Easily scale resources as your guild count grows.
+                        </p>
+                        <ul class="service-list">
+                            <li>
+                                <svg class="list-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Git-based auto deployment & FTP access</span>
+                            </li>
+                            <li>
+                                <svg class="list-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Free MongoDB / PostgreSQL databases</span>
+                            </li>
+                            <li>
+                                <svg class="list-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Always-online bot keeping (no sleep states)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Lavalink Hosting Card -->
+                    <div class="service-card" id="card-lavalink-hosting">
+                        <div class="service-icon-box purple-glow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20M17 5v14M22 9v6M7 8v8M2 10v4" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3>Lavalink Node Hosting</h3>
+                        <p class="service-desc">
+                            High-quality music audio streams without stuttering or Discord voice connection drops. Built for massive audio client scale.
+                        </p>
+                        <ul class="service-list">
+                            <li>
+                                <svg class="list-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Support for Lavalink v3 & v4 nodes</span>
+                            </li>
+                            <li>
+                                <svg class="list-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>Custom Lavalink Plugins (Youtube-Source, etc.)</span>
+                            </li>
+                            <li>
+                                <svg class="list-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                <span>No rate limiting on IP addresses (proxy integration)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Pricing Calculator -->
+        <section class="pricing-section" id="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Flexible Resources, Honest Prices</h2>
+                    <p class="section-subtitle">Choose between bot container hosting or dedicated Lavalink audio servers. Drag the slider to compute your exact plan.</p>
+                </div>
+
+                <div class="pricing-wrapper">
+                    <!-- Pricing Tabs -->
+                    <div class="pricing-tabs">
+                        <button class="tab-btn active" id="tab-bot" data-target="bot">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2" /><circle cx="12" cy="5" r="2" /></svg>
+                            Discord Bot Hosting
+                        </button>
+                        <button class="tab-btn" id="tab-lavalink" data-target="lavalink">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5v14M22 9v6M7 8v8M2 10v4" /></svg>
+                            Lavalink Audio Nodes
+                        </button>
+                    </div>
+
+                    <!-- Pricing Calculator Card -->
+                    <div class="pricing-card-main glass-panel">
+                        <div class="pricing-calc-info">
+                            <div class="calc-label-row">
+                                <span class="calc-header-tag" id="current-service-type">Bot Hosting Spec</span>
+                                <span class="calc-featured-badge">Deploy in &lt; 60 Seconds</span>
+                            </div>
+                            
+                            <!-- Resource Slider -->
+                            <div class="slider-container">
+                                <div class="slider-label-row">
+                                    <label for="resource-slider">Select RAM Resources:</label>
+                                    <span class="resource-display" id="ram-display">2 GB RAM</span>
+                                </div>
+                                <input type="range" min="1" max="8" value="2" class="range-slider" id="resource-slider">
+                                <div class="slider-ticks">
+                                    <span>1GB</span>
+                                    <span>2GB</span>
+                                    <span>3GB</span>
+                                    <span>4GB</span>
+                                    <span>6GB</span>
+                                    <span>8GB</span>
+                                </div>
+                            </div>
+
+                            <!-- Hardware Specs Grid -->
+                            <div class="hardware-grid">
+                                <div class="hw-spec-card">
+                                    <span class="hw-title">VCPU ALLOCATION</span>
+                                    <strong class="hw-value" id="cpu-display">1 Core AMD EPYC</strong>
+                                </div>
+                                <div class="hw-spec-card">
+                                    <span class="hw-title">NVME SSD STORAGE</span>
+                                    <strong class="hw-value" id="disk-display">15 GB Storage</strong>
+                                </div>
+                                <div class="hw-spec-card">
+                                    <span class="hw-title">DATABASES Included</span>
+                                    <strong class="hw-value" id="db-display">1 DB (MongoDB)</strong>
+                                </div>
+                                <div class="hw-spec-card">
+                                    <span class="hw-title">BANDWIDTH / TRAFFIC</span>
+                                    <strong class="hw-value" id="traffic-display">Unmetered 10Gbps</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Price display sidebar -->
+                        <div class="pricing-checkout-card">
+                            <span class="price-subtitle">TOTAL ESTIMATED</span>
+                            <div class="price-amount-wrapper">
+                                <span class="currency">₹</span>
+                                <span class="price-val" id="price-display">52</span>
+                                <span class="period">/mo</span>
+                            </div>
+                            <ul class="checkout-checks">
+                                <li>
+                                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <span>Instant Pterodactyl Panel Access</span>
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <span>24/7 Automated Backups</span>
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <span>Cancel / Upgrade at any time</span>
+                                </li>
+                            </ul>
+                            <a href="https://discord.gg/bothost" target="_blank" rel="noopener" class="btn btn-primary btn-checkout btn-full" id="btn-pricing-checkout">Configure Node</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Node Status Dashboard -->
+        <section class="status-section" id="status">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Live Node Fleet Status</h2>
+                    <p class="section-subtitle">Real-time performance index metrics across our high-capacity hardware nodes. Verify we're running green.</p>
+                </div>
+
+                <div class="status-dashboard-grid">
+                    <!-- Stats summary cards -->
+                    <div class="fleet-metrics-panel glass-panel">
+                        <h3>Node Fleet Overview</h3>
+                        <div class="fleet-grid">
+                            <div class="metric-box">
+                                <span>Global Nodes Active</span>
+                                <strong>18 / 18</strong>
+                                <span class="badge-status green">Online</span>
+                            </div>
+                            <div class="metric-box">
+                                <span>Total Audio Streams</span>
+                                <strong id="active-players-count">4,289 players</strong>
+                                <span class="badge-status teal">Active Now</span>
+                            </div>
+                            <div class="metric-box">
+                                <span>Average Core Temp</span>
+                                <strong>41°C (AMD EPYC)</strong>
+                                <span class="badge-status blue">Optimal</span>
+                            </div>
+                            <div class="metric-box">
+                                <span>Uptime Current Cycle</span>
+                                <strong>99.998%</strong>
+                                <span class="badge-status purple">SLA Met</span>
+                            </div>
+                        </div>
+
+                        <!-- Real-time performance chart simulated bars -->
+                        <div class="visual-usage-tracker">
+                            <div class="tracker-header">
+                                <span>Network Load Distribution</span>
+                                <span class="tracker-percent" id="net-load-val">42% Traffic</span>
+                            </div>
+                            <div class="tracker-bar-container">
+                                <div class="tracker-bar-fill" id="net-load-bar" style="width: 42%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Latency Tester Panel -->
+                    <div class="ping-tester-panel glass-panel">
+                        <h3>Interactive Ping Route Test</h3>
+                        <p class="ping-intro-text">Simulate connection request times from your local computer to our core nodes hosting bots and Lavaplayer.</p>
+                        
+                        <div class="ping-locations-list">
+                            <div class="ping-location-item" data-loc="us">
+                                <div class="loc-name">
+                                    <span class="flag-icon">🇺🇸</span>
+                                    <span>United States</span>
+                                </div>
+                                <div class="ping-result" id="ping-us">-- ms</div>
+                            </div>
+                            <div class="ping-location-item" data-loc="germany">
+                                <div class="loc-name">
+                                    <span class="flag-icon">🇩🇪</span>
+                                    <span>Germany</span>
+                                </div>
+                                <div class="ping-result" id="ping-germany">-- ms</div>
+                            </div>
+                            <div class="ping-location-item" data-loc="singapore">
+                                <div class="loc-name">
+                                    <span class="flag-icon">🇸🇬</span>
+                                    <span>Singapore</span>
+                                </div>
+                                <div class="ping-result" id="ping-singapore">-- ms</div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary btn-full btn-glow-cyan" id="btn-run-ping-test">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                            </svg>
+                            Run Real-time Ping Test
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Code Configurator -->
+        <section class="configurator-section" id="configurator">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Lavalink Node Connector</h2>
+                    <p class="section-subtitle">Integration is instant. Toggle language frameworks below to copy the connection parameters straight into your bot code.</p>
+                </div>
+
+                <div class="configurator-wrapper glass-panel">
+                    <div class="config-tabs-sidebar">
+                        <h4>Frameworks</h4>
+                        <button class="framework-btn active" data-lang="js-poru">
+                            <span>Discord.js + Poru (JS)</span>
+                        </button>
+                        <button class="framework-btn" data-lang="js-erela">
+                            <span>Discord.js + Erela.js (JS)</span>
+                        </button>
+                        <button class="framework-btn" data-lang="py-wavelink">
+                            <span>Discord.py + Wavelink (Py)</span>
+                        </button>
+                    </div>
+
+                    <div class="config-display-area">
+                        <div class="code-header">
+                            <span class="code-title" id="code-file-name">bot.js</span>
+                            <button class="btn-copy-code" id="btn-copy-code">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="copy-icon">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                </svg>
+                                <span id="copy-status-text">Copy Code</span>
+                            </button>
+                        </div>
+                        <pre class="code-pre"><code id="code-block" class="language-javascript">// Connection code snippet will inject here</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Accordion -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Everything you need to know about setting up your bot and lavalink configurations.</p>
+                </div>
+
+                <div class="faq-accordion-wrapper">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <button class="faq-question-btn" aria-expanded="false">
+                            <span>What is Lavalink, and why do I need hosting for it?</span>
+                            <span class="faq-icon-arrow">+</span>
+                        </button>
+                        <div class="faq-answer-container">
+                            <p class="faq-answer">
+                                Lavalink is a standalone audio sending node written in Java that handles the audio processing, decoding, and socket streams for Discord music bots. By hosting Lavalink on dedicated high-performance hardware, your bot code does not have to execute complex media parsing, preventing sound lag, voice cracking, and CPU bottlenecks on your main bot container.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question-btn" aria-expanded="false">
+                            <span>How long does it take for my server to activate?</span>
+                            <span class="faq-icon-arrow">+</span>
+                        </button>
+                        <div class="faq-answer-container">
+                            <p class="faq-answer">
+                                Deployment is 100% automated and instant. As soon as invoice verification is complete, your Pterodactyl container login credentials are emailed to you, allowing you to upload your files, manage dependencies, and boot your server immediately.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <button class="faq-question-btn" aria-expanded="false">
+                            <span>Can I use custom Lavalink plugins (e.g. YouTube sources, Spotify)?</span>
+                            <span class="faq-icon-arrow">+</span>
+                        </button>
+                        <div class="faq-answer-container">
+                            <p class="faq-answer">
+                                Yes. All our Lavalink plans allow you to customize the `application.yml` config file and upload `.jar` plugins (like custom video/audio decoders) directly into the `plugins/` subdirectory of your Lavalink node server.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <button class="faq-question-btn" aria-expanded="false">
+                            <span>What node regions do you offer?</span>
+                            <span class="faq-icon-arrow">+</span>
+                        </button>
+                        <div class="faq-answer-container">
+                            <p class="faq-answer">
+                                We currently deploy bot and Lavalink nodes in the United States, Germany, and Singapore to guarantee low latency nodes closest to your Discord voice channel gateways.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <a href="#" class="logo footer-logo">
+                    <img src="nodewavelogo.png" alt="NodeWave Logo" class="logo-img" style="width: 28px; height: 28px;">
+                    <span>Node<span class="gradient-text">Wave</span></span>
+                </a>
+                <p class="brand-moto">High performance nodes crafted for developers. Scale up without breaking your code.</p>
+                <div class="social-row">
+                    <a href="https://discord.gg/bothost" class="social-icon-btn" aria-label="Discord">
+                        <svg width="20" height="15" viewBox="0 0 127.14 96.36" fill="currentColor"><path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.45-5c.88-.65,1.74-1.34,2.58-2a75.58,75.58,0,0,0,72.9,0c.84.71,1.7,1.4,2.58,2a68.32,68.32,0,0,1-10.45,5,78.37,78.37,0,0,0,6.63,10.85,105.5,105.5,0,0,0,31.1-18.77C129.76,48.45,123.75,25.66,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Products</h4>
+                <a href="#pricing">Discord Bot Hosting</a>
+                <a href="#pricing">Lavalink Dedicated Nodes</a>
+                <a href="#pricing">JMusicBot Instant Setup</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Status</h4>
+                <a href="#status">Uptime Dashboard</a>
+                <a href="#status">Global Network Map</a>
+                <a href="#status">SLA History Report</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="https://discord.gg/bothost">Join Discord</a>
+                <a href="#billing">Billing Dashboard</a>
+                <a href="#faq">Knowledgebase FAQ</a>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 NodeWave Hosting (nodewave.cc). All rights reserved.</p>
+            <p>We are not affiliated with Discord Inc.</p>
+        </div>
+    </footer>
+
+    <!-- App Logic Script -->
+    <script src="app.js"></script>
+</body>
+</html>
