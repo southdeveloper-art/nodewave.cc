@@ -670,7 +670,16 @@ function initAudioTester() {
 
         playerPanel.innerHTML = `
             <div class="active-player-container" style="animation: fade-in 0.5s ease;">
-                <img src="${artwork}" alt="${title}" class="active-player-art">
+                <div class="art-wrapper">
+                    <img src="${artwork}" alt="${title}" class="active-player-art">
+                    <div class="visualizer-overlay">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
                 <h3 class="active-player-title">${title}</h3>
                 <p class="active-player-artist">${artist}</p>
                 <audio class="active-player-audio" controls autoplay name="media">
@@ -678,5 +687,18 @@ function initAudioTester() {
                 </audio>
             </div>
         `;
+
+        const audioEl = playerPanel.querySelector('.active-player-audio');
+        const artWrapper = playerPanel.querySelector('.art-wrapper');
+
+        audioEl.addEventListener('play', () => {
+            artWrapper.classList.add('is-playing');
+        });
+        audioEl.addEventListener('pause', () => {
+            artWrapper.classList.remove('is-playing');
+        });
+        audioEl.addEventListener('ended', () => {
+            artWrapper.classList.remove('is-playing');
+        });
     }
 }
