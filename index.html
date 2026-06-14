@@ -39,7 +39,17 @@
                     </svg>
                     <span>Discord</span>
                 </a>
-                <a href="https://discord.gg/bothost" class="btn btn-primary btn-nav-cta" id="btn-nav-portal">Client Panel</a>
+                <div class="nav-dropdown-container">
+                    <button class="btn btn-primary btn-nav-cta dropdown-toggle" id="btn-nav-portal">
+                        Client Panels
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 4px;"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="https://billing.nodewave.cc" class="dropdown-item">Billing Panel</a>
+                        <a href="https://panel.nodewave.cc" class="dropdown-item">Control Panel</a>
+                        <a href="https://lava.nodewave.cc" class="dropdown-item">Lavalink Panel</a>
+                    </div>
+                </div>
             </div>
             <!-- Mobile Menu Toggle -->
             <button class="mobile-toggle" id="mobile-nav-toggle" aria-label="Toggle menu">
@@ -60,7 +70,12 @@
         <a href="./knowledgebase/index.html" class="mobile-menu-link" style="color:#5c85ff">Knowledge Base</a>
         <div class="mobile-menu-actions">
             <a href="https://discord.gg/bothost" class="btn-discord-nav" target="_blank" rel="noopener">Discord Support</a>
-            <a href="https://discord.gg/bothost" class="btn btn-primary" style="text-align: center; display: block; margin-top: 1rem;">Client Panel</a>
+            <div class="mobile-client-panels">
+                <span class="mobile-panel-header">Client Panels</span>
+                <a href="https://billing.nodewave.cc" class="btn btn-primary" style="text-align:center;display:block;margin-top:0.5rem;">Billing Panel</a>
+                <a href="https://panel.nodewave.cc" class="btn btn-secondary" style="text-align:center;display:block;margin-top:0.5rem;background:rgba(255,255,255,0.05);color:white;border:1px solid rgba(255,255,255,0.1);padding:0.75rem;border-radius:8px;">Control Panel</a>
+                <a href="https://lava.nodewave.cc" class="btn btn-secondary" style="text-align:center;display:block;margin-top:0.5rem;background:rgba(255,255,255,0.05);color:white;border:1px solid rgba(255,255,255,0.1);padding:0.75rem;border-radius:8px;">Lavalink Panel</a>
+            </div>
         </div>
     </div>
 
