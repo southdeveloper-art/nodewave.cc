@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base | NodeWave – FAQ & Guides</title>
+    <meta name="description" content="Find answers to everything about NodeWave's Discord Bot Hosting and Lavalink Node services. Setup guides, billing, troubleshooting and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Knowledge Base Specific Styles ── */
+        .kb-hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+        .kb-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(43, 88, 248, 0.1);
+            color: #5c85ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(43, 88, 248, 0.2);
+        }
+        .kb-hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.6) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .kb-hero-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 580px;
+            margin: 0 auto 3rem;
+        }
+        .kb-search-bar {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 0;
+            background: #111216;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .kb-search-bar svg {
+            margin-left: 1.25rem;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            align-self: center;
+        }
+        .kb-search-bar input {
+            flex: 1;
+            padding: 1rem;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+        }
+        .kb-search-bar input::placeholder { color: var(--text-muted); }
+
+        /* Category tabs */
+        .kb-tabs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .kb-tab {
+            padding: 0.55rem 1.1rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: transparent;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+            font-family: var(--font-body);
+        }
+        .kb-tab:hover { background: rgba(255,255,255,0.04); color: var(--text-primary); }
+        .kb-tab.active { background: rgba(54,97,255,0.15); color: #5c85ff; border-color: rgba(54,97,255,0.3); }
+
+        /* FAQ Categories */
+        .kb-body { padding: 60px 0 100px; }
+        .kb-category { margin-bottom: 4rem; }
+        .kb-category-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .kb-category-title svg { color: #3661ff; }
+        .kb-category-title span.cat-count {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: rgba(255,255,255,0.05);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+        }
+
+        /* FAQ accordion – same as index.html but re-scoped here for clarity */
+        .kb-faq-list { display: flex; flex-direction: column; gap: 0.6rem; }
+        .kb-faq-item {
+            background: #111216;
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+        .kb-faq-item.open { border-color: rgba(54,97,255,0.3); }
+        .kb-faq-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 1.5rem;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.97rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            gap: 1rem;
+        }
+        .kb-faq-btn:hover { color: #fff; }
+        .kb-faq-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        .kb-faq-item.open .kb-faq-icon {
+            border-color: #3661ff;
+            color: #3661ff;
+            background: rgba(54,97,255,0.1);
+            transform: rotate(45deg);
+        }
+        .kb-faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.2s ease;
+        }
+        .kb-faq-item.open .kb-faq-body { max-height: 600px; }
+        .kb-faq-body p, .kb-faq-body ul {
+            padding: 0 1.5rem 1.25rem;
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+            line-height: 1.75;
+        }
+        .kb-faq-body ul { padding-left: 2.5rem; }
+        .kb-faq-body li { margin-bottom: 0.4rem; }
+        .kb-faq-body code {
+            background: rgba(255,255,255,0.06);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            font-family: monospace;
+            color: #7dd3fc;
+        }
+
+        /* Sidebar layout */
+        .kb-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .kb-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+        .kb-sidebar-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        .kb-sidebar-links { display: flex; flex-direction: column; gap: 0.25rem; }
+        .kb-sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.55rem 0.75rem;
+            border-radius: 7px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        .kb-sidebar-link:hover { background: rgba(255,255,255,0.04); color: var(--text-primary); }
+        .kb-sidebar-link.active { background: rgba(54,97,255,0.1); color: #5c85ff; }
+        .kb-sidebar-link svg { flex-shrink: 0; }
+
+        /* Help banner */
+        .kb-help-banner {
+            background: linear-gradient(135deg, rgba(54,97,255,0.15) 0%, rgba(100,54,255,0.1) 100%);
+            border: 1px solid rgba(54,97,255,0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        .kb-help-banner h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .kb-help-banner p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.25rem; }
+
+        /* No results */
+        .kb-no-results { text-align: center; padding: 4rem 0; color: var(--text-muted); display: none; }
+
+        @media (max-width: 900px) {
+            .kb-layout { grid-template-columns: 1fr; }
+            .kb-sidebar { position: static; }
+            .kb-tabs { display: flex; overflow-x: auto; padding-bottom: 0.5rem; flex-wrap: nowrap; }
+            .kb-tab { flex-shrink: 0; }
+        }
+        @media (max-width: 600px) {
+            .kb-hero { padding: 130px 0 60px; }
+            .kb-hero-title { font-size: 2rem; }
+            .kb-faq-btn { font-size: 0.9rem; padding: 1rem 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo" id="nav-logo">
+                <img src="nodewavelogo.png" alt="NodeWave Logo" class="logo-img">
+                <span>Node<span class="gradient-text">Wave</span></span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#pricing" class="nav-link">Pricing</a>
+                <a href="index.html#status" class="nav-link">Node Status</a>
+                <a href="index.html#configurator" class="nav-link">Configurator</a>
+                <a href="knowledgebase.html" class="nav-link" style="color: #5c85ff;">Knowledge Base</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="https://discord.gg/bothost" class="btn-discord-nav" target="_blank" rel="noopener">
+                    <svg width="20" height="15" viewBox="0 0 127.14 96.36" fill="currentColor"><path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.45-5c.88-.65,1.74-1.34,2.58-2a75.58,75.58,0,0,0,72.9,0c.84.71,1.7,1.4,2.58,2a68.32,68.32,0,0,1-10.45,5,78.37,78.37,0,0,0,6.63,10.85,105.5,105.5,0,0,0,31.1-18.77C129.76,48.45,123.75,25.66,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/></svg>
+                    <span>Discord</span>
+                </a>
+                <a href="index.html#billing" class="btn btn-primary btn-nav-cta">Client Panel</a>
+            </div>
+            <button class="mobile-toggle" id="mobile-nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-menu" id="mobile-menu-drawer">
+        <a href="index.html#services" class="mobile-menu-link">Services</a>
+        <a href="index.html#pricing" class="mobile-menu-link">Pricing</a>
+        <a href="index.html#status" class="mobile-menu-link">Node Status</a>
+        <a href="index.html#configurator" class="mobile-menu-link">Configurator</a>
+        <a href="knowledgebase.html" class="mobile-menu-link" style="color:#5c85ff;">Knowledge Base</a>
+        <div class="mobile-menu-actions">
+            <a href="https://discord.gg/bothost" class="btn-discord-nav" target="_blank" rel="noopener">Discord Support</a>
+            <a href="index.html#billing" class="btn btn-primary" style="text-align:center;display:block;margin-top:1rem;">Client Panel</a>
+        </div>
+    </div>
+
+    <!-- KB Hero -->
+    <section class="kb-hero">
+        <div class="container">
+            <div class="kb-hero-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Knowledge Base
+            </div>
+            <h1 class="kb-hero-title">Answers to Everything<br>About NodeWave</h1>
+            <p class="kb-hero-subtitle">Browse our full FAQ library covering setup, billing, Lavalink config, troubleshooting, and more.</p>
+            <div class="kb-search-bar">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="kb-search-input" placeholder="Search questions... e.g. Spotify plugin" autocomplete="off">
+            </div>
+        </div>
+    </section>
+
+    <!-- KB Body -->
+    <section class="kb-body">
+        <div class="container">
+
+            <!-- Category Tabs -->
+            <div class="kb-tabs" id="kb-tabs">
+                <button class="kb-tab active" data-cat="all">All Topics</button>
+                <button class="kb-tab" data-cat="getting-started">Getting Started</button>
+                <button class="kb-tab" data-cat="lavalink">Lavalink</button>
+                <button class="kb-tab" data-cat="bot-hosting">Bot Hosting</button>
+                <button class="kb-tab" data-cat="billing">Billing & Plans</button>
+                <button class="kb-tab" data-cat="troubleshooting">Troubleshooting</button>
+                <button class="kb-tab" data-cat="security">Security & Uptime</button>
+                <button class="kb-tab" data-cat="plugins">Plugins & Config</button>
+            </div>
+
+            <div class="kb-layout">
+                <!-- Sidebar -->
+                <aside class="kb-sidebar">
+                    <p class="kb-sidebar-title">Jump To Section</p>
+                    <div class="kb-sidebar-links">
+                        <a href="#cat-getting-started" class="kb-sidebar-link active">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            Getting Started
+                        </a>
+                        <a href="#cat-lavalink" class="kb-sidebar-link">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+                            Lavalink
+                        </a>
+                        <a href="#cat-bot-hosting" class="kb-sidebar-link">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            Bot Hosting
+                        </a>
+                        <a href="#cat-billing" class="kb-sidebar-link">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                            Billing & Plans
+                        </a>
+                        <a href="#cat-troubleshooting" class="kb-sidebar-link">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            Troubleshooting
+                        </a>
+                        <a href="#cat-security" class="kb-sidebar-link">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Security & Uptime
+                        </a>
+                        <a href="#cat-plugins" class="kb-sidebar-link">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            Plugins & Config
+                        </a>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <main>
+                    <div class="kb-no-results" id="kb-no-results">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:1rem;color:#3661ff"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <p style="font-size:1rem;color:var(--text-secondary)">No results found. Try a different keyword.</p>
+                    </div>
+
+                    <!-- ─── GETTING STARTED ─── -->
+                    <div class="kb-category" id="cat-getting-started" data-cat="getting-started">
+                        <h2 class="kb-category-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            Getting Started
+                            <span class="cat-count">7 articles</span>
+                        </h2>
+                        <div class="kb-faq-list">
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>How do I place my first order?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Visit our <a href="index.html#pricing" style="color:#5c85ff">Pricing page</a>, select the plan that suits your needs (Discord Bot or Lavalink), click "Order Now", fill in your details on the billing portal, and complete your payment. Your server credentials will be emailed to you instantly after invoice verification.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>How long does server activation take?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Deployment is 100% automated and instant. As soon as your invoice is verified your Pterodactyl panel login credentials are delivered to your email — you can upload files and boot your server immediately.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>What control panel do you use?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>NodeWave uses <strong>Pterodactyl</strong>, the industry-standard open-source game/server control panel. It gives you a web-based dashboard to start/stop/restart your server, view real-time resource usage, manage files, read console logs, set up scheduled tasks, and create sub-users.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>How do I upload my bot files?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body">
+                                    <p>You can upload files in two ways:</p>
+                                    <ul>
+                                        <li>Use the built-in <strong>File Manager</strong> in the Pterodactyl panel (drag & drop supported).</li>
+                                        <li>Connect via <strong>SFTP</strong> using any FTP client (e.g. FileZilla or WinSCP) using the SFTP credentials shown in your panel Settings tab.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Which programming languages are supported for bots?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body">
+                                    <p>All major languages are supported through pre-built Eggs in Pterodactyl:</p>
+                                    <ul>
+                                        <li><strong>Node.js</strong> (discord.js, eris, sapphire)</li>
+                                        <li><strong>Python</strong> (discord.py, nextcord, py-cord)</li>
+                                        <li><strong>Java</strong> (JDA, Javacord)</li>
+                                        <li><strong>Go, Rust, C#</strong> via custom eggs on request.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Can I have multiple bots on one plan?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Each plan covers one server container. If you need to run multiple bots, you can either order multiple plans or contact us on Discord — we offer bulk pricing for multi-bot setups.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Do you provide a free trial?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Yes! All Managed Lavalink plans include a <strong>24-hour free trial</strong>. You can test full playback quality using the Lavalink Audio Test demo right on our homepage before you commit to a plan.</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─── LAVALINK ─── -->
+                    <div class="kb-category" id="cat-lavalink" data-cat="lavalink">
+                        <h2 class="kb-category-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+                            Lavalink
+                            <span class="cat-count">9 articles</span>
+                        </h2>
+                        <div class="kb-faq-list">
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>What is Lavalink and why do I need dedicated hosting for it?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Lavalink is a standalone audio-sending node written in Java. It handles all audio processing, decoding, and stream management for Discord music bots — offloading that heavy work from your main bot process. Without dedicated Lavalink hosting, your bot server CPU will be bottlenecked, causing lag, stuttering, and voice disconnects under load.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>How do I connect my bot to my NodeWave Lavalink node?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body">
+                                    <p>In your bot's Lavalink client library config, use the following values (replace with your actual credentials from the panel):</p>
+                                    <ul>
+                                        <li><code>host</code>: Your server IP or hostname</li>
+                                        <li><code>port</code>: The port shown in your panel (default <code>2333</code>)</li>
+                                        <li><code>password</code>: The password set in your <code>application.yml</code></li>
+                                        <li><code>secure</code>: <code>false</code> unless you've configured SSL</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Which Lavalink version do you run?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>We support both <strong>Lavalink v3</strong> and the latest <strong>Lavalink v4</strong>. You can choose your preferred version when ordering or request a version switch via our support Discord. v4 is recommended for all new projects as it brings a revamped REST API and better plugin support.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Can I edit the application.yml config file?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Yes, full access is granted. Navigate to the <strong>File Manager</strong> in your panel, find <code>application.yml</code> in your server's root, and edit it directly in the browser editor or via SFTP. Remember to restart your Lavalink server after saving changes.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Does Lavalink support Spotify, Apple Music, and SoundCloud?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Out of the box, Lavalink supports <strong>YouTube, SoundCloud, Bandcamp, Vimeo, Twitch, and direct HTTP links</strong>. For Spotify and Apple Music, you need to install the <strong>LavaSrc</strong> plugin (which we support). Spotify resolves tracks via YouTube internally — no official Spotify API audio streaming is involved.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>How many simultaneous audio streams can one node handle?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>This depends on your plan's RAM and CPU allocation. As a rough guide: 512 MB RAM handles ~5–10 simultaneous streams, 1 GB handles ~20–30, and 2 GB+ handles 50+ without degradation. All our hardware uses AMD Ryzen processors for maximum single-thread performance.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>What port does Lavalink use by default?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Lavalink uses port <code>2333</code> by default. In our panel, an external port will be allocated and mapped to your container's internal 2333 — always use the <strong>external port shown in your panel</strong> when configuring your bot.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Is the public NodeWave Lavalink node free to use?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Yes! Our <strong>Public Lavalink node</strong> is available for free to test. You can use it in the Lavalink Audio Test section on the homepage. However, the public node has rate limits and no uptime guarantees. For production bots, a dedicated managed Lavalink plan is strongly recommended.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Can I run multiple Lavalink instances on one server?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Each plan runs one Lavalink process per container. If you need multiple sharded nodes (e.g. for very large bots), contact our support to discuss a multi-node arrangement with dedicated IPs and balanced resource allocation.</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─── BOT HOSTING ─── -->
+                    <div class="kb-category" id="cat-bot-hosting" data-cat="bot-hosting">
+                        <h2 class="kb-category-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            Bot Hosting
+                            <span class="cat-count">6 articles</span>
+                        </h2>
+                        <div class="kb-faq-list">
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>How do I keep my bot running 24/7?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Once your files are uploaded and your start command is configured in the panel, simply click the green <strong>Start</strong> button. The container will keep your process running indefinitely. You can also enable <strong>Auto-Restart on Crash</strong> in the panel's Settings tab so your bot restarts automatically if it ever exits unexpectedly.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>How do I set environment variables (.env)?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>You can set environment variables two ways: upload a <code>.env</code> file through the File Manager, or go to the <strong>Startup</strong> tab in your Pterodactyl panel and define variables there. Variables defined in the panel take precedence and are more secure as they are never stored in plain text files.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Can I install npm / pip packages?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Yes. Use the Console tab in your panel to run commands like <code>npm install</code> or <code>pip install -r requirements.txt</code> directly inside your container. Alternatively, configure your start command to run <code>npm install && node index.js</code> so dependencies are installed on every boot.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>What Node.js / Python versions are available?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body">
+                                    <p>Available runtime versions include:</p>
+                                    <ul>
+                                        <li><strong>Node.js:</strong> 16, 18, 20 (LTS), 21</li>
+                                        <li><strong>Python:</strong> 3.9, 3.10, 3.11, 3.12</li>
+                                        <li><strong>Java:</strong> 11, 17, 21 (for Lavalink)</li>
+                                    </ul>
+                                    <p>You can request a different version via our Discord support.</p>
+                                </div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Is there a database included with my plan?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Yes! Bot Hosting plans include <strong>MySQL/MariaDB database slots</strong> depending on your plan tier. You can create and manage databases directly from the <strong>Databases</strong> tab in your Pterodactyl panel. Connection credentials (host, port, user, password, database name) are shown there.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Can I schedule tasks (cron jobs)?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Absolutely. The <strong>Schedules</strong> tab in Pterodactyl lets you create cron-style tasks such as automatic restarts, backup triggers, or custom console commands at defined intervals — all without needing SSH access.</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─── BILLING ─── -->
+                    <div class="kb-category" id="cat-billing" data-cat="billing">
+                        <h2 class="kb-category-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                            Billing & Plans
+                            <span class="cat-count">7 articles</span>
+                        </h2>
+                        <div class="kb-faq-list">
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>What payment methods do you accept?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>We accept <strong>UPI, PayPal, credit/debit cards</strong> (Visa, Mastercard), and various regional payment methods. For enterprise/bulk orders, bank transfers are available. Contact us on Discord for details.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Is billing monthly or annual?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>All plans are billed <strong>monthly</strong> by default. Annual billing is available on request with a discount. Your service renews automatically unless you cancel before the renewal date.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Can I upgrade or downgrade my plan?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Yes. You can request a plan change anytime through our billing portal or Discord support. Upgrades are applied instantly (prorated). Downgrades take effect at the start of the next billing cycle.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Do you offer refunds?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>We offer a <strong>24-hour money-back guarantee</strong> on first-time orders if you are not satisfied. Refunds are not available after 24 hours except in cases of provable service failure on our end. Please open a ticket on Discord to request a refund.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>What happens if I miss a payment?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>You will receive an email reminder 3 days before your invoice is due. If the invoice remains unpaid, your server will be suspended (not deleted) for 7 days. After 7 days of non-payment, the server and its data will be permanently removed. Paying the overdue invoice during the suspension window will reactivate your server immediately.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Are there setup fees?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>No. There are absolutely <strong>zero setup fees</strong>. You only pay the advertised monthly plan price. Deployment, configuration assistance, and onboarding are all included at no extra cost.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Can I cancel anytime?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Yes. You can cancel your plan at any time through the billing portal without any cancellation fees. Your server will remain active until the end of the paid billing period. We recommend backing up your data before cancellation.</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─── TROUBLESHOOTING ─── -->
+                    <div class="kb-category" id="cat-troubleshooting" data-cat="troubleshooting">
+                        <h2 class="kb-category-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            Troubleshooting
+                            <span class="cat-count">8 articles</span>
+                        </h2>
+                        <div class="kb-faq-list">
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>My bot is crashing on startup. What do I check?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body">
+                                    <p>Check the following in order:</p>
+                                    <ul>
+                                        <li>Open the <strong>Console</strong> tab — read the error message carefully.</li>
+                                        <li>Make sure your <strong>Start Command</strong> is correct (Startup tab).</li>
+                                        <li>Verify all required <strong>environment variables</strong> (bot token, etc.) are set.</li>
+                                        <li>Make sure dependencies are installed (run <code>npm install</code> in console).</li>
+                                        <li>Check that you are using a compatible <strong>Node.js/Python version</strong>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Lavalink is not connecting to my bot. How do I fix it?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body">
+                                    <p>Common reasons Lavalink won't connect:</p>
+                                    <ul>
+                                        <li>Wrong <strong>host</strong> — use the exact IP/hostname from your panel, not <code>localhost</code>.</li>
+                                        <li>Wrong <strong>port</strong> — use the <em>external</em> port allocated in your panel, not 2333.</li>
+                                        <li>Wrong <strong>password</strong> — must match exactly what is in your <code>application.yml</code>.</li>
+                                        <li>Lavalink server is <strong>not started</strong> — check the panel console for errors.</li>
+                                        <li>Firewall blocking the port — contact support if you suspect this.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Music is stuttering or lagging. What causes this?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Stuttering is usually caused by insufficient RAM or CPU for the number of active streams. Try upgrading your Lavalink plan to a higher tier. Also make sure you are connecting to the <strong>nearest region node</strong> to your Discord voice server for minimal latency.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>My bot went offline and won't restart. What do I do?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Log into your Pterodactyl panel, go to your server, and click the <strong>Start</strong> button. Check the console for any error output. If the server shows "Installing" or is stuck, open a support ticket on Discord. Make sure Auto-Restart is enabled in Settings to prevent this in future.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>I can't upload files via SFTP. What should I check?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body">
+                                    <ul>
+                                        <li>Use the <strong>SFTP credentials</strong> from the Settings tab — not SSH credentials.</li>
+                                        <li>Ensure your FTP client is set to <strong>SFTP</strong> protocol, not FTP or FTPS.</li>
+                                        <li>The SFTP port is usually <strong>2022</strong>, not 22 — check your panel.</li>
+                                        <li>Your firewall or antivirus might be blocking the outbound connection.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>I'm getting "No matches found" when searching for songs.</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>This usually means the YouTube or platform source is blocked or rate-limited on the node. Try searching with a <code>ytsearch:</code> prefix (e.g. <code>ytsearch:Believer</code>). If the issue persists, it may require updating your LavaSrc plugin or switching to a different audio source. Contact support for guidance.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>The panel says my server is "Offline" even though it's running.</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>This can happen if the Wings daemon has a temporary communication hiccup. Try refreshing the page. If the status doesn't update within 2 minutes, restart the server via the panel's Kill/Start buttons. If the issue continues, report it in our Discord support channel — it may be a node-level issue we need to investigate.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>How do I view my server logs / errors?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>All stdout/stderr output is visible in real-time in the <strong>Console</strong> tab of your Pterodactyl panel. For persisted logs, your application must write to a log file itself (e.g. using <code>winston</code> in Node.js or Python's <code>logging</code> module). You can then view those files in the File Manager.</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─── SECURITY & UPTIME ─── -->
+                    <div class="kb-category" id="cat-security" data-cat="security">
+                        <h2 class="kb-category-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Security & Uptime
+                            <span class="cat-count">5 articles</span>
+                        </h2>
+                        <div class="kb-faq-list">
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>What is your uptime SLA?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>NodeWave guarantees a <strong>99.9% uptime SLA</strong> on all plans. Our infrastructure uses redundant power, network links, and automated failover. Scheduled maintenance windows are announced at least 24 hours in advance on our Discord.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Is my data backed up?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>NodeWave performs regular infrastructure-level backups. However, we strongly recommend creating your own backups using the <strong>Backups</strong> tab in Pterodactyl. You can store up to a defined number of backups (depending on your plan) and restore them with a single click.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Is my bot token safe?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Your bot token is stored as an <strong>encrypted environment variable</strong> in Pterodactyl. Staff never have access to your individual container environment variables. Always set your token via the Startup tab, never hardcode it in your files.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Do you offer DDoS protection?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Yes. All our nodes are protected by enterprise-grade <strong>DDoS mitigation</strong> at the network level. This covers volumetric attacks, protocol attacks, and application-layer attacks. In the event of a targeted attack, our team will take additional mitigation steps.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Can I add sub-users to my panel?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Yes. In the <strong>Users</strong> tab of your Pterodactyl server, you can invite other users by email and grant them specific permissions (e.g. start/stop, file manager, console access) without giving them your full account credentials.</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─── PLUGINS & CONFIG ─── -->
+                    <div class="kb-category" id="cat-plugins" data-cat="plugins">
+                        <h2 class="kb-category-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            Plugins & Configuration
+                            <span class="cat-count">6 articles</span>
+                        </h2>
+                        <div class="kb-faq-list">
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>How do I install plugins on Lavalink?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body">
+                                    <p>Two methods:</p>
+                                    <ul>
+                                        <li><strong>Via application.yml (recommended for v4):</strong> Add the plugin under the <code>plugins:</code> block in your config — Lavalink will auto-download it on startup.</li>
+                                        <li><strong>Manual upload:</strong> Upload the <code>.jar</code> file into the <code>plugins/</code> directory in your server files and restart.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>How do I enable Spotify on Lavalink?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body">
+                                    <p>Install the <strong>LavaSrc</strong> plugin and add the following to your <code>application.yml</code>:</p>
+                                    <ul>
+                                        <li>Set your Spotify <code>clientId</code> and <code>clientSecret</code> (from the Spotify Developer Dashboard).</li>
+                                        <li>Set <code>countryCode</code> to your region (e.g. <code>IN</code> for India).</li>
+                                        <li>Restart the node. Tracks will resolve through YouTube audio internally.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>Can I use custom YouTube cookies to bypass restrictions?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Yes. You can configure <code>youtube-source</code> to use cookies from a logged-in YouTube/Google account in your <code>application.yml</code>. This helps bypass age-restrictions and some regional blocks. Upload your exported cookie file to the server and reference its path in the config. Note: use a dedicated throwaway Google account for this.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>What popular Lavalink plugins does NodeWave support?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body">
+                                    <p>We fully support all major community plugins including:</p>
+                                    <ul>
+                                        <li><strong>LavaSrc</strong> – Spotify, Apple Music, Deezer, Yandex Music</li>
+                                        <li><strong>skybot/youtube-source</strong> – Enhanced YouTube support</li>
+                                        <li><strong>Topis-Source-Managers</strong> – additional platform sources</li>
+                                        <li><strong>LavaLyrics</strong> – real-time lyrics fetching</li>
+                                        <li><strong>sponsorblock-plugin</strong> – skip YouTube SponsorBlock segments</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>How do I set up audio filters (bass boost, nightcore, etc.)?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Lavalink natively supports real-time audio filters via the REST API or your bot's music library (e.g. <code>lavalink.js</code>, <code>DisTube</code>). Filters like <strong>equalizer, bass boost, nightcore, vaporwave, karaoke, tremolo</strong>, and rotation are all supported out of the box — no plugins required. Implement them through your bot's track player object.</p></div>
+                            </div>
+                            <div class="kb-faq-item">
+                                <button class="kb-faq-btn"><span>How do I reset my Lavalink password?</span><span class="kb-faq-icon">+</span></button>
+                                <div class="kb-faq-body"><p>Open your <code>application.yml</code> in the File Manager, find the <code>lavalink.server.password</code> field, change it to your desired new password, save the file, and restart your Lavalink server. Then update the password in your bot's Lavalink client configuration to match.</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Help Banner -->
+                    <div class="kb-help-banner">
+                        <h3>Still have questions?</h3>
+                        <p>Our support team is available 24/7 on Discord. Join the server and open a ticket — we typically respond within minutes.</p>
+                        <a href="https://discord.gg/bothost" class="btn btn-primary" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.6rem;text-decoration:none;">
+                            <svg width="18" height="14" viewBox="0 0 127.14 96.36" fill="currentColor"><path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.45-5c.88-.65,1.74-1.34,2.58-2a75.58,75.58,0,0,0,72.9,0c.84.71,1.7,1.4,2.58,2a68.32,68.32,0,0,1-10.45,5,78.37,78.37,0,0,0,6.63,10.85,105.5,105.5,0,0,0,31.1-18.77C129.76,48.45,123.75,25.66,107.7,8.07Z"/></svg>
+                            Join Discord Support
+                        </a>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container" style="text-align:center;padding:2rem 0;color:var(--text-muted);font-size:0.85rem;">
+            <a href="index.html" class="logo footer-logo" style="display:inline-flex;align-items:center;gap:0.6rem;text-decoration:none;margin-bottom:1rem;">
+                <img src="nodewavelogo.png" alt="NodeWave" style="width:24px;height:24px;">
+                <span style="font-family:var(--font-heading);font-weight:700;color:var(--text-primary)">Node<span class="gradient-text">Wave</span></span>
+            </a>
+            <p>© 2025 NodeWave. All rights reserved. &nbsp;|&nbsp; <a href="index.html" style="color:var(--text-muted);text-decoration:none;">Home</a> &nbsp;|&nbsp; <a href="knowledgebase.html" style="color:#5c85ff;text-decoration:none;">Knowledge Base</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile nav (same as index)
+        const toggle = document.getElementById('mobile-nav-toggle');
+        const drawer = document.getElementById('mobile-menu-drawer');
+        if (toggle && drawer) {
+            toggle.addEventListener('click', () => {
+                toggle.classList.toggle('active');
+                drawer.classList.toggle('active');
+                const spans = toggle.querySelectorAll('span');
+                if (toggle.classList.contains('active')) {
+                    spans[0].style.transform = 'translateY(8px) rotate(45deg)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            document.addEventListener('click', (e) => {
+                if (drawer.classList.contains('active') && !drawer.contains(e.target) && !toggle.contains(e.target)) {
+                    toggle.classList.remove('active');
+                    drawer.classList.remove('active');
+                }
+            });
+        }
+
+        // FAQ Accordion
+        document.querySelectorAll('.kb-faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.kb-faq-item');
+                const wasOpen = item.classList.contains('open');
+                // Close all
+                document.querySelectorAll('.kb-faq-item.open').forEach(i => i.classList.remove('open'));
+                if (!wasOpen) item.classList.add('open');
+            });
+        });
+
+        // Tab filtering
+        const tabs = document.querySelectorAll('.kb-tab');
+        const categories = document.querySelectorAll('.kb-category');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const cat = tab.dataset.cat;
+                categories.forEach(c => {
+                    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+                });
+                document.getElementById('kb-no-results').style.display = 'none';
+            });
+        });
+
+        // Live search
+        const searchInput = document.getElementById('kb-search-input');
+        searchInput.addEventListener('input', () => {
+            const q = searchInput.value.toLowerCase().trim();
+            if (!q) {
+                // reset
+                tabs.forEach(t => t.classList.remove('active'));
+                document.querySelector('[data-cat="all"]').classList.add('active');
+                categories.forEach(c => c.style.display = '');
+                document.querySelectorAll('.kb-faq-item').forEach(i => i.style.display = '');
+                document.getElementById('kb-no-results').style.display = 'none';
+                return;
+            }
+            let anyVisible = false;
+            categories.forEach(cat => {
+                let catHasMatch = false;
+                cat.querySelectorAll('.kb-faq-item').forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    const match = text.includes(q);
+                    item.style.display = match ? '' : 'none';
+                    if (match) { catHasMatch = true; anyVisible = true; }
+                });
+                cat.style.display = catHasMatch ? '' : 'none';
+            });
+            document.getElementById('kb-no-results').style.display = anyVisible ? 'none' : 'block';
+        });
+
+        // Sidebar link active on scroll
+        const sidebarLinks = document.querySelectorAll('.kb-sidebar-link');
+        const catEls = document.querySelectorAll('.kb-category');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            catEls.forEach(el => {
+                if (window.scrollY >= el.offsetTop - 150) current = '#' + el.id;
+            });
+            sidebarLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === current);
+            });
+        });
+    </script>
+</body>
+</html>
